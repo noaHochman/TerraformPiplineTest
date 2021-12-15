@@ -1,13 +1,18 @@
 terraform {
+  required_version = ">= 0.15"
+
+  backend "azurerm" {}
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>2.0"
+      version = "~> 2"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3"
     }
   }
-}
-provider "azurerm" {
-  features {} #This is required for v2 of the provider even if empty or plan will fail
 }
 
 resource "azurerm_resource_group" "rgTST-noa" {
