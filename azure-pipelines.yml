@@ -27,3 +27,47 @@ stages:
         provider: 'azurerm'
         command: 'validate'
         workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
+        
+- stage: deploy
+  jobs:
+  - deployment: deploy_terraform
+    continueOnError: false
+    environment: dev
+    strategy: 
+     runOnce:
+       deploy:
+         steps:
+           - checkout: self
+           
+           - task: TerraformInstaller@0
+             displayName: 'install terraform'
+             inputs:
+               terraformVersion: 'latest'
+
+           - task: TerraformTaskV2@2
+             displayName: 'tf init'
+             inputs:
+               provider: 'azurerm'
+               command: 'init'
+               backendServiceArm: 'Turkiz-Starfish-MCS-TST-003(a297be23-a84e-4659-90e9-60cf0be8838b)'
+               backendAzureRmResourceGroupName: 'noa-terraformTST'
+               backendAzureRmStorageAccountName: 'terraformpipelinetst'
+               backendAzureRmContainerName: 'tfpiplines'
+               backendAzureRmKey: 'terraform.tfstate'
+              
+              
+           - task: TerraformTaskV2@2
+             displayName: 'tf plan'
+             inputs:
+               provider: 'azurerm'
+               command: 'plan'
+               workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
+               environmentServiceNameAzureRM: 'Turkiz-Starfish-MCS-TST-003(a297be23-a84e-4659-90e9-60cf0be8838b)'
+
+           - task: TerraformTaskV2@2
+             displayName: 'tf apply'
+             inputs:
+               provider: 'azurerm'
+               command: 'apply'
+               workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
+               environmentServiceNameAzureRM: 'Turkiz-Starfish-MCS-TST-003(a297be23-a84e-4659-90e9-60cf0be8838b)'
