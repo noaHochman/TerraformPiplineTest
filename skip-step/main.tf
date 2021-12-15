@@ -1,18 +1,12 @@
 terraform {
-  required_version = ">= 0.15"
-
-  backend "azurerm" {}
-
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 2"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3"
-    }
+  backend "azurerm" {
   }
+}
+
+provider "azurerm" {
+  version = ">=2.0"
+  # The "feature" block is required for AzureRM provider 2.x.
+  features {}
 }
 
 resource "azurerm_resource_group" "rgTST-noa" {
