@@ -1,12 +1,14 @@
 terraform {
-  backend "azurerm" {
+  required_version = ">=0.12"
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~>2.0"
+    }
   }
 }
-
 provider "azurerm" {
-  version = ">=2.0"
-  # The "feature" block is required for AzureRM provider 2.x.
-  features {}
+  features {} #This is required for v2 of the provider even if empty or plan will fail
 }
 
 resource "azurerm_resource_group" "rgTST-noa" {
