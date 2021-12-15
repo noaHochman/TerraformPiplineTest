@@ -9,7 +9,7 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "rg" {
-  name     = "resourcegroup-test-tbd-3"
-  location = "westeurope"
+resource "azurerm_resource_group" "rgTST-noa" {
+  name     = "example-resources"
+  location = "West Europe"
 }
