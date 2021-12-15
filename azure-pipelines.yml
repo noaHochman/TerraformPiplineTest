@@ -49,6 +49,7 @@ stages:
              inputs:
                provider: 'azurerm'
                command: 'init'
+               workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
                backendServiceArm: 'Turkiz-Starfish-MCS-TST-003(a297be23-a84e-4659-90e9-60cf0be8838b)'
                backendAzureRmResourceGroupName: 'noa-terraformTST'
                backendAzureRmStorageAccountName: 'terraformpipelinetst'
