@@ -1,5 +1,11 @@
+parameters:
+- name: RG_NAME
+  type: string
+
 variables:
-  TF_VAR_RG_NAME: 'noarg'
+  TF_VAR_RG_NAME: ${{ parameters.RG_NAME }}
+
+trigger: none
 
 stages:
 - stage: validate
