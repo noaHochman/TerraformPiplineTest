@@ -10,7 +10,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rgTST-noa" {
-  name     = "example-resources"
+  name     = var.RG_NAME
   location = "West Europe"
   
     tags = {
