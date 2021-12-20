@@ -64,7 +64,7 @@ stages:
                backendType: 'azurerm'
                command: 'plan'
                workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
-               environmentServiceName: 'Turkiz-Starfish-MCS-TST-003(a297be23-a84e-4659-90e9-60cf0be8838b)'
+               environmentServiceName: 'SPTerraformTST'
                allowTelemetryCollection: true
 
            - task: TerraformCLI@0
@@ -73,6 +73,6 @@ stages:
                backendType: 'azurerm'
                command: 'apply'
                workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
-               environmentServiceName: 'Turkiz-Starfish-MCS-TST-003(a297be23-a84e-4659-90e9-60cf0be8838b)'
+               environmentServiceName: 'SPTerraformTST'
                allowTelemetryCollection: true
                
