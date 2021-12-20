@@ -14,6 +14,7 @@ stages:
       inputs:
         command: 'init'
         backendType: 'azurerm'
+        backendServiceArm: 'SPTerraformTST'
         backendAzureRmResourceGroupName: 'noa-terraformTST'
         backendAzureRmStorageAccountName: 'terraformpipelinetst'
         backendAzureRmContainerName: 'tfpiplines'
@@ -51,6 +52,7 @@ stages:
              inputs:
                backendType: 'azurerm'
                command: 'init'
+               backendServiceArm: 'SPTerraformTST'
                backendAzureRmResourceGroupName: 'noa-terraformTST'
                backendAzureRmStorageAccountName: 'terraformpipelinetst'
                backendAzureRmContainerName: 'tfpiplines'
