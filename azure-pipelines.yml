@@ -1,5 +1,5 @@
-variables:
- TF_VAR_RG_NAME: "noa"
+#variables:
+# TF_VAR_RG_NAME: "noa"
 
 stages:
 - stage: validate
