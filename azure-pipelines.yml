@@ -1,6 +1,5 @@
 variables:
-- group: noa-TST
-  TF_VAR_RG_NAME: $[variables.RG-NAME]
+  TF_VAR_RG_NAME: "noa"
 
 stages:
 - stage: validate
